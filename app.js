@@ -33,11 +33,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set up session
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'fallback_secret_key_not_for_production',
+  secret: "sumanth@8897414296",
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ 
-    mongoUrl: process.env.MONGODB_URI
+    mongoUrl: "mongodb+srv://sushanth123:sushanth123@sumanth1.apxwy1f.mongodb.net/knifee?retryWrites=true&w=majority"
   }),
   cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
