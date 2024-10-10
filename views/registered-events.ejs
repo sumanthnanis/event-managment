@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/css/myEventStyles.css">
+<div class="container">
+    <h1>Your Registered Events</h1>
+    
+    <div class="events-container">
+        <% if (events.length > 0) { %>
+            <% events.forEach(event => { %>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="/uploads/<%= event.imageUrl || 'image.jpg' %>" alt="<%= event.name %>">
+                    </div>
+                    <div class="event-details">
+                    <h3><a href="/event/<%= event._id %>"><%= event.name %></a></h3>
+                    <p><strong>Company:</strong> <%= event.companyName || 'N/A' %></p>
+                    <p><strong>Type:</strong> <%= event.type %></p>
+                    <p><strong>Location:</strong> <%= event.location %></p>
+                    <p><strong>Description:</strong><%= event.description.substring(0, 100) %>...</p>
+                    <p><strong>Date:</strong> <%= event.createdAt.toDateString() %></p>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>You have not registered for any events yet.</p>
+        <% } %>
+    </div>
+</div>

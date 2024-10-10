@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/css/createStyles.css">
+<div class="container">
+  <h1>Edit Event: <%= event.name %></h1>
+  <form action="/edit-event/<%= event._id %>" method="POST">
+    <div class="form-group">
+      <label for="name">Event Name:</label>
+      <input type="text" id="name" name="name" value="<%= event.name %>" required>
+    </div>
+    <div class="form-group">
+      <label for="type">Event Type:</label>
+      <select id="type" name="type" required>
+        <option value="Workshop" <%= event.type === 'Workshop' ? 'selected' : '' %>>Workshop</option>
+        <option value="Webinar" <%= event.type === 'Webinar' ? 'selected' : '' %>>Webinar</option>
+        <option value="Hackathon" <%= event.type === 'Hackathon' ? 'selected' : '' %>>Hackathon</option>
+        <option value="Bootcamp" <%= event.type === 'Bootcamp' ? 'selected' : '' %>>Bootcamp</option>
+        <option value="Conference" <%= event.type === 'Conference' ? 'selected' : '' %>>Conference</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="<%= event.location %>" required>
+    </div>
+    <div class="form-group">
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" value="<%= event.companyName %>" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><%= event.description %></textarea>
+    </div>
+    <button type="submit" class="btn">Update Event</button>
+  </form>
+
+</div>
+
+

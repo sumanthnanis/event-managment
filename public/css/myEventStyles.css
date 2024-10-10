@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1, h2 {
+    color: black;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.event-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.event-card:hover {
+    transform: translateY(-5px);
+}
+.event-image {
+width: 100%;
+height: 200px;
+overflow: hidden;
+}
+
+.event-image img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Maintain aspect ratio */
+}
+
+.event-details {
+    padding: 20px;
+}
+.event-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+.event-card h3 a {
+    color: #FF385C;
+    text-decoration: none;
+}
+.event-card h3 a:hover {
+    color: #e74c3c;
+    text-decoration: underline;
+
+}
+.event-card p {
+    margin: 10px 0;
+    color: #333;
+}
+.event-card strong {
+    font-weight: bold;
+    color: black;
+}
+.event-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.btn-edit {
+    background-color: #e74c3c;
+}
+.btn-edit:hover {
+    background-color: #c0392b;
+}
+.btn-danger {
+    background-color: #333;
+}
+.btn-danger:hover {
+    background-color: #000;
+}

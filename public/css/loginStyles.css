@@ -1,0 +1,91 @@
+/* Body and background style */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://source.unsplash.com/random/1920x1080/?nature') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  /* Centering the container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Wrapper for the login box */
+  .login-wrapper {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Login Title Styling */
+  .login-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  /* Form control styling */
+  .form-group {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #333; /* Green border */
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: #FF385C; /* Darker green on focus */
+    outline: none;
+  }
+  
+  /* Button styling */
+  .btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF385C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #000000;
+  }
+  
+  /* Signup text and link styling */
+  .signup-text {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .signup-link {
+    color: #FF385C;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+    color: #000000;
+  }
+  

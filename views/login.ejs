@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/css/loginStyles.css">
+<div class="container">
+  <div class="login-wrapper">
+    <h1 class="login-title">login into SkillConnect!</h1>
+    <form action="/login" method="POST" class="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p class="signup-text">Don't have an account? <a href="/signup" class="signup-link">Sign up</a></p>
+  </div>
+</div>
+
+

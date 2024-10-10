@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/css/homeStyles.css">
+<div class="container">
+    <!-- Dynamic Heading Row -->
+    <h1 id="dynamic-heading" class="dynamic-heading"></h1>
+
+    <div class="search-bar" action="/" method="GET">
+        
+        <form class="search-input" action="/" method="GET" >
+            <label for="type">Type</label>
+            <select id="type" name="type" onchange="this.form.submit()">
+                <option value="Workshop" <%= typeFilter === 'Workshop' ? 'selected' : '' %>>Workshop</option>
+                <option value="Webinar" <%= typeFilter === 'Webinar' ? 'selected' : '' %>>Webinar</option>
+                <option value="Hackathon" <%= typeFilter === 'Hackathon' ? 'selected' : '' %>>Hackathon</option>
+                <option value="Bootcamp" <%= typeFilter === 'Bootcamp' ? 'selected' : '' %>>Bootcamp</option>
+                <option value="Conference" <%= typeFilter === 'Conference' ? 'selected' : '' %>>Conference</option>
+            </select>
+            <input type="hidden" name="query" value="<%= query %>">
+            <input type="hidden" name="view" value="<%= view %>">
+            <input type="hidden" name="sort" value="<%= sortBy %>">
+        </form>
+        <form class="search-input" action="/" method="GET">
+            <label for="sort">Sort</label>
+            <select id="sort" name="view" onchange="this.form.submit()">
+                <option value="upcoming" <%= view === 'upcoming' ? 'selected' : '' %>>Sort by Upcoming Events</option>
+                <option value="past" <%= view === 'past' ? 'selected' : '' %>>Sort by Past Events</option>
+                <option value="popular" <%= view === 'popular' ? 'selected' : '' %>>Sort by Most Popular</option>
+            </select>
+            <input type="hidden" name="query" value="<%= query %>">
+            <input type="hidden" name="type" value="<%= typeFilter %>">
+        </form>
+        <form class="search-input" action="/" method="GET" >
+            <label for="where">Where</label>
+        <div class="search-div">
+            <input type="text" id="where" name="query" placeholder="Search events..." required>
+        
+            <button type="submit" class="search-button" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            
+            </button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Events Section -->
+<h2><%= view.charAt(0).toUpperCase() + view.slice(1) %> Events</h2>
+<div class="events-container">
+    <% if (events.length > 0) { %>
+        <% events.forEach(event => { %>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/uploads/<%= event.imageUrl || 'image.jpg' %>" alt="<%= event.name %>">
+                </div>
+                <div class="event-details">
+                    <h3><a href="/event/<%= event._id %>"><%= event.name %></a></h3>
+                    <p><strong>Company:</strong> <%= event.companyName || 'N/A' %></p>
+                    <p><strong>Type:</strong> <%= event.type %></p>
+                    <p><strong>Location:</strong> <%= event.location %></p>
+                    <p><strong>Date:</strong> <%= new Date(event.date).toDateString() %></p>
+                    <p><strong>Registered Users:</strong> <%= event.registeredUsers.length %></p>
+                    <div class="event-actions">
+                        <% if (user && user.role !== 'admin' && !event.registeredUsers.includes(user._id)) { %>
+                            <form action="/register-event/<%= event._id %>" method="POST" style="display:inline;">
+                                <button type="submit" class="btn">Register</button>
+                            </form>
+                        <% } else if (user && event.registeredUsers.includes(user._id)) { %>
+                            <p>You are already registered for this event.</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>No events available at the moment.</p>
+    <% } %>
+</div>
+
+</div>
+
+<script src="/scripts/script.js"></script>

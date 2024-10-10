@@ -1,0 +1,53 @@
+    <%- include('partials/header') %>
+    <link rel="stylesheet" href="/css/eventDetailStyles.css">
+    <div class="container">
+        <div class="event-image">
+            <img src="/uploads/<%= event.imageUrl || 'imagesss.jpeg' %>" alt="<%= event.name %>" class="event-img">
+        </div>
+        <div class="event-details">
+            <div class="event-title">
+                <h1><%= event.name %></h1>
+                <p>Building the next wave of innovative AI powered data analytics applications with Microsoft Fabric</p>
+            </div>
+            <div class="event-info">
+                <div class="info-item">
+                    <span class="info-label">Company:</span> <%= event.companyName || 'N/A' %>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Type:</span> <%= event.type %>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location:</span> <%= event.location %>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Date:</span> <%= new Date(event.createdAt).toDateString() %>
+                </div>
+                <div class="info-item">      
+                  <% if (user && user.role !== 'admin' && !event.registeredUsers.includes(user._id)) { %>
+                  <form action="/register-event/<%= event._id %>" method="POST" style="display:inline;">
+                      <button type="submit" class="btn">Register</button>
+                  </form>
+                  <% } else if (user && event.registeredUsers.includes(user._id)) { %>
+                  <button class="btn" disabled>Registered</button>
+                    <% } %>
+                </div>
+                
+            </div>
+            <div class="event-description">
+              <div class="description-title">Description:</div>
+              <%
+              const paragraphs = event.description
+                  .replace(/\r\n/g, '\n')  // Normalize line endings
+                  .split(/\n{2,}/)         // Split on two or more newlines
+                  .filter(p => p.trim())   // Remove empty paragraphs
+                  .map(p => p.trim());     // Trim whitespace from each paragraph
+              
+              paragraphs.forEach(paragraph => {
+          %>
+              <p><%= paragraph %></p>
+          <% }); %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
